@@ -1,0 +1,442 @@
+
+@import 'var';
+@import 'mixins';
+
+html{
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    color: $font-color;
+}
+
+.wrapper{
+    width: 100%;
+    background: $bcg-color;
+    .container{
+        max-width: 160rem;
+        margin: 0 auto;
+        .title{
+            max-width: 160rem;
+            font-size: 5rem;
+            padding: 6rem 1rem;
+            margin: 0 auto;
+        }
+    }
+}
+// ----- HEADER  -----
+
+.header{
+    height: 100vh;
+    width: 100%;
+    .nav{
+        position:relative;
+        .burger{
+            position:fixed;
+            z-index:2;
+            top: .5rem;
+            right: .5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background: $accent-color;
+            border-radius: 50%;
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            &__item{
+                position: relative;
+                top:0;
+                width: 60%;
+                height: .3rem;
+                display: block;
+                background: #eee;
+                margin: .3rem auto;
+                transition: all .1s ease-in;    
+            }
+            &:hover{
+                cursor: pointer;
+               
+            }
+            
+        }
+        .cross:nth-child(1){
+            top: .6rem;
+            right: -.7rem;
+            width: 30%;
+            transform:rotate(45deg);
+        }
+        .cross:nth-child(2){
+           width: 40%;
+        }
+        .cross:nth-child(3){
+            top: -.6rem;
+            right: -.7rem;
+            width: 30%;
+            transform:rotate(-45deg);
+        }
+        .menu{
+            position: fixed;
+            top: 0;
+            left:0;
+            margin-left: -100rem;
+            opacity: 0;
+            z-index: -1;
+            @include flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            background: $bcg-color;
+            transition: all .3s ease-in;
+            &__item{
+                @include flex;
+                width: 100%;
+                opacity: 0;
+                margin:1rem 0 0 -3rem;
+                a{
+                    width: 90%;
+                    max-width: 70rem;
+                    text-align: center;
+                    border-bottom: 1px solid rgba(255,255,255,0.2);
+                    font-size: 4rem;
+                    text-decoration: none;
+                    padding:1rem 0;
+                    color: $secondary-font-color;
+                }
+            }
+            
+        }
+        .show-menu{
+            margin-left: 0;
+            opacity: 1;
+            z-index:1;
+            transition: all .3s ease-out;
+        }
+    }
+    .banner{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left:0;
+        background-image:  url( ../img/bcg1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100vh;
+        @include flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        &__title{
+            display: none;
+        }
+        &__subtitle{
+            font-size: 10rem;
+            padding-left: 1rem;
+            text-shadow: 1px 1px 1px #000;
+            letter-spacing: .5rem;
+            text-align: center;
+            opacity: 0;
+            animation: title 1s .4s forwards;
+            margin-bottom: 5rem;
+        }
+    }
+}
+.content{
+    width: 100%;
+    color: #fff;
+    .section{
+       border-bottom: .1rem solid rgba(255,255,255,0.2);
+       padding: 5rem 0;
+
+    }
+    .about{
+        width: 100%;
+        .card-box{
+            @include flex;
+            flex-direction: column;
+            &__item{
+                width: 100%;
+                box-sizing: border-box;
+                padding:1rem;
+                margin: 8rem 2rem 3rem;
+                text-align: center;
+                max-width: 60rem;
+                .photo{
+                    width: 100%;
+                    text-align: center;
+                }
+                .description{
+                    width: 100%;
+                    &__title{
+                        padding: 2rem 0;
+                        font-size: 2.5rem;
+                        opacity: .87;
+                    }
+                    &__read-more{
+                        display: block;
+                        display: none;
+    
+                    }
+                    &__para,
+                    &__read-more{
+                        width: 100%;
+                        font-size: 1.6rem;
+                        line-height: 2.4rem;
+                        opacity: .5;
+                    }
+                    &__btn{
+                        @include btn;
+                    }
+                }
+            } 
+        }
+    }
+    .projects{
+        .container{
+            .projects-box{
+                @include flex;
+                flex-direction: column;
+                .project{
+                    @include flex;
+                    flex-direction:column;
+                    flex-grow:1;
+                    width: 95%;
+                    background: lighten($bcg-color, 5%);
+                    color: $secondary-font-color;
+                    border-radius: .2rem;
+                    border: 1px solid #fff;
+                    margin: 1rem 0;
+                    .icon{
+                        font-size: 8rem;
+                        margin: 2rem 0;
+                        color: #bdbdbd;
+                    }
+                    &__title{
+                        font-size: 3rem;
+                        opacity: .87;
+                    }
+                    &__type{
+                        margin: 2rem 0;
+                        opacity: .5;
+                        font-size: 1.4rem;
+                    }
+                    &__link{
+                        @include btn;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        
+    }
+    .contact{
+        .form{
+            @include flex;
+            flex-direction: column;
+            max-width: 70rem;
+            margin: 0 auto;
+        
+            .label{
+                font-size: 2rem;
+                width: 95%;
+                padding: 2rem 0;
+                &__input{
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    height: 3rem;
+                    border-radius: .3rem;
+                    margin: 1rem auto;
+                    display: block;
+                    text-indent: .5rem;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+                    &:focus, &:hover{
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                    }
+                }
+                .textarea{
+                    height: 10rem;
+                    padding: .5rem 0;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+                    &:focus, &:hover{
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                    }
+                }
+            }
+            &__btn{
+                @include btn;
+            }
+            &__info{
+                width: 100%;
+                &-title{
+                    font-size:5rem;
+                }
+                &-subtitle{
+                    font-size:3rem;
+                }
+            }
+        }
+    }
+}                
+.footer{
+    width: 100%;
+    padding: 3rem 0 1rem;
+    @include flex;
+    flex-direction: column;
+    .box-socials{
+        @include flex;
+        margin: 2rem 0;
+        .social{
+            margin: 2rem;
+            font-size: 3rem;
+            a{
+                color: $secondary-font-color;
+                transition: all .2s ease-in;
+                &:hover{
+                    color: $accent-color;
+                    transition: all .2s ease-in;
+                }
+            }    
+        }
+    }
+    .info{
+        color: #fff;
+    }
+}
+.mail-box{
+    position: absolute;
+    top: 0;
+    left:0;
+    height:100vh;
+    width: 100%;
+    @include flex;
+    flex-direction: column;
+    background: $bcg-color;
+    color: $secondary-font-color;
+    &__title{
+        font-size: 2.5rem;
+        padding: 3rem 0;
+        opacity: .87;
+
+    }
+    &__subtitle{
+        font-size: 1.5rem;
+        opacity: .6;
+    }
+    &__link{
+        @include btn;
+        text-decoration: none;
+    }
+}
+
+// ---------------- Animations ----------------
+
+@keyframes arrow{
+    from{ transform: translateY(-3rem)}
+    to{transform: translateY(3rem)}
+}
+
+@keyframes title{
+    0%{
+        opacity: 0; transform: translateY(-20rem);
+    }
+    70%{
+        opacity: .7; transform: translateY(2rem);
+    }
+    100%{
+        opacity:1; transform: translateY(0);
+    }
+}
+
+
+
+
+
+// media 768px
+@media screen and (min-width:768px){
+    .header{
+        .banner{
+            &__subtitle{
+                font-size: 25rem;
+            }
+        }
+    }
+    .content{
+        .section{
+            padding: 10rem 0;
+        }
+        .projects{
+            .container{
+                margin: 0;
+                .projects-box{
+                    flex-wrap:wrap;
+                    flex-direction: row;
+                    overflow:hidden;
+                    .project{
+                        position: relative;
+                        width: 50%;
+                        height: 50vh;
+                        background: none;
+                        border: none;
+                        transition: all .2s ease-out;
+                        
+                        &:hover{
+                            background: darken($bcg-color,5%);
+                            cursor: pointer;
+                            transition: all .2s ease-out;
+                            transform: translate(1rem, -1rem);
+                            box-shadow: 0 5px 1px $accent-color;
+                            border-radius: .2rem;
+                        }
+                       
+                    }   
+                }  
+            } 
+        } 
+    }
+}
+
+// media 1024
+
+@media screen and (min-width:1024px){
+    .header{
+        .banner{
+            &__subtitle{
+                font-size: 30rem;    
+            }
+        }
+    }
+    .content{
+        .about{
+            .container{
+                .card-box{
+                    flex-direction: row;
+                    align-items: flex-start;
+                }
+            }
+        }
+    }
+}
+
+// media 1600
+
+@media screen and (min-width:1600px){
+    
+    .content{
+        .projects{
+            .container{
+                max-width: 100%;
+             
+                .projects-box{
+                    flex-wrap:wrap;
+                    flex-direction: row;
+                    .project{
+                        width: 33.33%;
+                    }   
+                }  
+            } 
+        } 
+    }
+}

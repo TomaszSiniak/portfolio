@@ -1,0 +1,26 @@
+@mixin flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin btn{
+    outline: none;
+    font-size: 1.4rem;
+    margin: 2rem auto;
+    display: block;
+    background: $accent-color;
+    border: none;
+    padding: .8rem 1.6rem;
+    border-radius: .2rem;
+    color: $secondary-font-color;
+    opacity: 0.87;
+    transition: all .2s ease-in;
+    &:hover{
+        cursor: pointer;
+        transform:scale(1.05);
+        background: #fff;
+        color: $font-color;
+        transition: all .2s ease-in;
+    }
+}
