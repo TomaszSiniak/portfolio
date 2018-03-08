@@ -253,6 +253,7 @@ html {
         -ms-flex-direction: column;
             flex-direction: column; }
     .content .projects .container .projects-box .project {
+      position: relative;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -274,7 +275,9 @@ html {
       color: #fff;
       border-radius: .2rem;
       border: 1px solid #fff;
-      margin: 1rem 0; }
+      margin: 1rem 0;
+      z-index: 3;
+      overflow: hidden; }
       .content .projects .container .projects-box .project .icon {
         font-size: 8rem;
         margin: 2rem 0;
@@ -311,6 +314,70 @@ html {
           -webkit-transition: all .2s ease-in;
           -o-transition: all .2s ease-in;
           transition: all .2s ease-in; }
+      .content .projects .container .projects-box .project .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background: #1a1b20;
+        text-align: center;
+        margin-top: -30rem;
+        opacity: 0;
+        -webkit-transition: all .5s ease-out;
+        -o-transition: all .5s ease-out;
+        transition: all .5s ease-out; }
+        .content .projects .container .projects-box .project .overlay .description {
+          font-size: 2rem;
+          padding: 1rem .5rem;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
+          line-height: 3rem; }
+        .content .projects .container .projects-box .project .overlay .technology {
+          margin-top: 1rem;
+          padding: .5rem; }
+          .content .projects .container .projects-box .project .overlay .technology__item {
+            font-size: 1.4rem;
+            line-height: 2.1rem; }
+      .content .projects .container .projects-box .project__info {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 5rem;
+        height: 5rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        z-index: 1; }
+        .content .projects .container .projects-box .project__info .fa-info {
+          font-size: 3rem; }
+        .content .projects .container .projects-box .project__info:hover {
+          cursor: pointer; }
+      .content .projects .container .projects-box .project .show-project-details {
+        opacity: 1;
+        margin-top: 0;
+        -webkit-transition: all .5s ease-in;
+        -o-transition: all .5s ease-in;
+        transition: all .5s ease-in; }
   .content .contact .form {
     display: -webkit-box;
     display: -ms-flexbox;

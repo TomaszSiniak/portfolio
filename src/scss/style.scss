@@ -197,6 +197,7 @@ html{
                 @include flex;
                 flex-direction: column;
                 .project{
+                    position: relative;
                     @include flex;
                     flex-direction:column;
                     flex-grow:1;
@@ -206,6 +207,8 @@ html{
                     border-radius: .2rem;
                     border: 1px solid #fff;
                     margin: 1rem 0;
+                    z-index:3;
+                    overflow: hidden;
                     .icon{
                         font-size: 8rem;
                         margin: 2rem 0;
@@ -224,10 +227,57 @@ html{
                         @include btn;
                         text-decoration: none;
                     }
-                }
+                    .overlay{
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        @include flex;
+                        flex-direction: column;
+                        width: 100%;
+                        height: 100%;
+                        background: darken($bcg-color, 5%);
+                        text-align: center;
+                        margin-top:-30rem;
+                        opacity:0;
+                        transition: all .5s ease-out;
+                        .description{
+                            font-size: 2rem;
+                            padding: 1rem .5rem;
+                            box-sizing: border-box;
+                            line-height: 3rem;
+                        }
+                        .technology{
+                        margin-top: 1rem;
+                        padding: .5rem;
+                            &__item{
+                                font-size: 1.4rem;
+                                line-height: 2.1rem;
+                            }
+                        }
+                    }
+                    &__info{
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        width: 5rem;
+                        height: 5rem;
+                        @include flex;
+                        z-index:1;
+                        .fa-info{
+                            font-size: 3rem;
+                        }
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                    .show-project-details{
+                        opacity: 1;
+                        margin-top:0;
+                        transition: all .5s ease-in;
+                    }
+                } 
             }
-        }
-        
+        } 
     }
     .contact{
         .form{
@@ -235,7 +285,6 @@ html{
             flex-direction: column;
             max-width: 70rem;
             margin: 0 auto;
-        
             .label{
                 font-size: 2rem;
                 width: 95%;

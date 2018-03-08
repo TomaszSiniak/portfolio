@@ -57,4 +57,8 @@ $(document).on('DOMContentLoaded', () => {
             $.scrollTo($('#contact'), 1200);   
         });
     });
+
+    $('.project__info').click( function(){
+        $(this).parent().find('.overlay').toggleClass('show-project-details');
+    });
 });
